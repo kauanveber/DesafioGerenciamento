@@ -69,7 +69,7 @@ public class metodos {
         String usuario = sc.nextLine();
         if (nome.contains(usuario)) {
             System.out.println("Deseja mesmo excluir o usuario: "+usuario+"?\n"
-                    + "1-S"
+                    + "1-S\n"
                     + "2-N ");
            String opcao = sc.nextLine();
            if(opcao.equalsIgnoreCase("S")){
