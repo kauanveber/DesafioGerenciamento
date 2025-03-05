@@ -64,50 +64,92 @@ public class metodos {
     }
     public static void ExcluirUsuario(ArrayList<String>nome,ArrayList<String>email,ArrayList<String>senha){
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("Informe o nome do usuario que deseja excluir: ");
-        String usuario = sc.nextLine();
-        if (nome.contains(usuario)) {
-            System.out.println("Deseja mesmo excluir o usuario: "+usuario+"?\n"
-                    + "1-S\n"
-                    + "2-N ");
-           String opcao = sc.nextLine();
-           if(opcao.equalsIgnoreCase("S")){
-            int indice = nome.indexOf(usuario);
-            nome.remove(indice);
-            email.remove(indice);
-            senha.remove(indice);
-               System.err.println("Usuario excluido com sucesso!!");
-           }else{
-               System.err.println("Nenhum Usuario foi excluido");
-           }
-        } else {
-            System.err.println("Nenhum usuario foi encontrado");
+        if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
+            System.err.println("Nenhum usuario cadastrado!!");
+        }else {
+            System.out.println("Informe o nome do usuario que deseja excluir: ");
+            String usuario = sc.nextLine();
+            if (nome.contains(usuario)) {
+                System.out.println("Deseja mesmo excluir o usuario: " + usuario + "?\n"
+                        + "1-S\n"
+                        + "2-N ");
+                String opcao = sc.nextLine();
+                if (opcao.equalsIgnoreCase("S")) {
+                    int indice = nome.indexOf(usuario);
+                    nome.remove(indice);
+                    email.remove(indice);
+                    senha.remove(indice);
+                    System.err.println("Usuario excluido com sucesso!!");
+                } else {
+                    System.err.println("Nenhum Usuario foi excluido");
+                }
+            } else {
+                System.err.println("Nenhum usuario foi encontrado");
+            }
         }
-        
     }
-    public static void login(ArrayList<String>email,ArrayList<String>senha){
-        Scanner sc = new Scanner (System.in);
+    public static void login(ArrayList<String>email,ArrayList<String>senha) {
+        Scanner sc = new Scanner(System.in);
         boolean emailComfirmado = false;
         boolean senhaComfirmado = false;
-        System.out.println("Digite seu email: ");
-        String emailL = sc.nextLine();
-        
-        System.out.println("Digite sua senha: ");
-        String senhaL = sc.nextLine();
-        
-        if(email.contains(emailL)){
-            emailComfirmado = true;
+
+        if ( email.isEmpty() || senha.isEmpty()) {
+            System.err.println("Nenhum usuario cadastrado!!");
+        } else {
+
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Digite seu email: ");
+                String emailL = sc.nextLine();
+
+                System.out.println("Digite sua senha: ");
+                String senhaL = sc.nextLine();
+
+                if (email.contains(emailL)) {
+                    emailComfirmado = true;
+                }
+                if (senha.contains(senhaL)) {
+                    senhaComfirmado = true;
+                }
+                if (emailComfirmado && senhaComfirmado) {
+                    System.out.println("Login efetuado com sucesso");
+                    break;
+                } else if (i < 2) {
+                    System.err.println("Senha ou email invalida." +
+                            " Tente Novamente(Você tem 3 tentativas)!! ");
+
+                }
+
+            }
+            System.err.println("Login Negado");
         }
-        if(senha.contains(senhaL)){
-            senhaComfirmado = true;
-        }
-        if(emailComfirmado && senhaComfirmado){
-            System.out.println("Login efetuado com sucesso");
+    }
+    public static void exibirCadastro(ArrayList<String>nome,ArrayList<String>email,ArrayList<String>senha){
+        if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
+            System.err.println("Nenhum usuario cadastrado!!");
         }else{
-            System.err.println("Login negado ");
+            System.out.print("Nome(s) do(s) cadastrado(s)= ");
+            for (String i : nome) {
+                System.out.print(i + " ");
+            }
+            System.out.println("");
+            System.out.print("Email(s) do(s) cadastrado(s)= ");
+            for (String i : email) {
+                System.out.print(i + " ");
+            }
+            System.out.println("");
+            System.out.print("Senha do(s) cadastrado(s)= ");
+            for (String i : senha) {
+                System.out.print(i + " ");
+
+            }
+
+            System.out.println("");
         }
+
     }
+
+
     }
+
 
 

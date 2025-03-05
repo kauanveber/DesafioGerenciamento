@@ -47,42 +47,14 @@ public class desafioGerenciamento {
                     
 
                 case 3:
-                    if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
-                            System.err.println("Nenhum usuario cadastrado!!");
-                        }else{
-                    System.out.print("Nome(s) do(s) cadastrado(s)= ");
-                    for (String i : nome) {
-                        System.out.print(i + " ");
-                    }
-                    System.out.println("");
-                    System.out.print("Email(s) do(s) cadastrado(s)= ");
-                    for (String i : email) {
-                        System.out.print(i + " ");
-                    }
-                    System.out.println("");
-                    System.out.print("Senha do(s) cadastrado(s)= ");
-                    for (String i : senha) {
-                        System.out.print(i + " ");
-                        
-                    }
-                    
-                    System.out.println("");
-                    }
+                   metodos.exibirCadastro(nome,email,senha);
                     break;
                 case 4:
-                    if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
-                            System.err.println("Nenhum usuario cadastrado!!");
-                        }else{
                     metodos.ExcluirUsuario(nome, email, senha);
-                    }
                     break;
                 
                 case 5:
-                    if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()){
-                            System.err.println("Nenhum usuario cadastrado!!");
-                        }else{
                     metodos.login(email, senha);
-                    }
                     break;
                     
                 default:
